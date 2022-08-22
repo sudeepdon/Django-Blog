@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <form action="/post-create/" method="post" class="post-form">
+    {% csrf_token %}
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="title">
+    <label for="text">Text:</label>
+    <textarea id="text" name="text" cols="30" rows="10"></textarea>
+    <button class="save btn btn-default" type="submit">Save</button>
+  </form>
+{% endblock content %}

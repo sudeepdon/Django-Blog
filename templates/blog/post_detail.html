@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <div class="post">
+    {% if post.published_date %}
+      <div class="date">{{ post.published_date }}</div>
+    {% else %}
+      <a class="btn btn-default" href="/post-publish/{{post.pk}}">Publish</a>
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    {% if user.is_authenticated %}
+      <a href="/post-edit/{{post.pk}}" class="btn btn-default">
+        <span class="material-symbols-outlined md-48">edit_square</span>
+      </a>
+      <a href="/post-delete/{{post.pk}}" class="btn btn-default">
+        <span class="material-symbols-outlined md-48">delete</span>
+      </a>
+    {% endif %}
+    <p align="justify">{{ post.text | linebreaks }}</p>
+  </div>
+{% endblock content %}
